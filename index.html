@@ -178,8 +178,6 @@
         <div class="stats-item"><strong>Jarak (mil):</strong> <span id="distanceMi">-</span> mil</div>
         <div class="stats-item"><strong>Sudut Berangkat:</strong> <span id="startAngle">-</span>°</div>
         <div class="stats-item"><strong>Sudut Tiba:</strong> <span id="endAngle">-</span>°</div>
-        <button id="locateBtn">Gunakan Lokasi Saya</button>
-        <button id="resetBtn">Reset Peta</button>
 
         <!-- Form Input Koordinat -->
         <div class="input-coord">
@@ -293,28 +291,7 @@
                     return [coord[1], coord[0]];
                 }), { color: 'blue' }).addTo(map);
             }
-           
-        }
-        
-        document.getElementById('locateBtn').addEventListener('click', function () {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    function (position) {
-                        var lat = position.coords.latitude;
-                        var lon = position.coords.longitude;
-                        addPoint(lat, lon);
-                        map.setView([lat, lon], 15);
-                        alert('Lokasi Anda berhasil ditemukan!');
-                    },
-                    function (error) {
-                        alert('Gagal mendapatkan lokasi Anda: ' + error.message);
-                    }
-                );
-            } else {
-                alert('Geolocation tidak didukung oleh browser Anda.');
-            }
         });
-
 
         document.getElementById('measureBtn').addEventListener('click', function () {
             var lat1 = parseFloat(document.getElementById('lat1').value);
